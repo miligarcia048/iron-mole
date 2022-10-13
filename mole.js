@@ -1,16 +1,16 @@
-class Hole {
+class Mole {
     constructor(x, y) {
 
         this.x = x;
         this.y = y;
-        this.width = 180;
-        this.height = 150;
+        this.width = 200;
+        this.height = 100;
 
     }
 
     draw() {
         const image = new Image()
-        image.src = "./images/hole.png";
+        image.src = "./images/mole.png";
         context.drawImage(image, this.x, this.y, this.width, this.height);
     }
 

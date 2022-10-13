@@ -1,11 +1,13 @@
 class Hammer {
+
     constructor() {
-        this.x = 320;
-        this.y = 220;
+        this.x = 230;
+        this.y = 230;
         this.width = 80;
         this.height = 80;
 
     }
+
 
     draw() {
         const image = new Image()
