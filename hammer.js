@@ -1,14 +1,15 @@
 class Hammer {
     constructor() {
-        this.x = 350;
-        this.y = 710;
-        this.width = 50;
-        this.height = 50;
-        this.image = new Image()
+        this.x = 320;
+        this.y = 220;
+        this.width = 100;
+        this.height = 100;
+
     }
 
     draw() {
-        this.image.src = "./images/hammer.png";
-        context.drawImage(this.image, this.x, this.y, this.width, this.height);
+        const image = new Image()
+        image.src = "./images/hammer.png";
+        context.drawImage(image, this.x, this.y, this.width, this.height);
     }
 }
