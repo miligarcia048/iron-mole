@@ -1,3 +1,7 @@
+body {
+    background-color: blanchedalmond;
+}
+
 #canvas {
     background-color: aqua;
     margin: auto;
@@ -11,4 +15,12 @@
 .title {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
+}
+
+#start-button {
+    font-size: 20px;
+    color: white;
+    border: none;
+    background-color: blueviolet;
+    padding: 20px;
 }

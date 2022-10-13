@@ -1,8 +1,12 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
-debugger
-let randomCoordinate = Math.floor(Math.random() * 8);
+document.getElementById("game-board").style.display = "none";
+document.getElementById("start-button").onclick = () => {
+    document.getElementById("game-board").style.display = "block";
+    document.getElementById("start-button").style.display = "none";
+    startGame();
+}
 
 let currentGame;
 
@@ -47,33 +51,37 @@ function startGame() {
     const hammer = new Hammer();
     currentGame.hammer = hammer;
     currentGame.hammer.draw();
-
-    // const mole = new Mole();
-    // currentGame.mole = mole;
-    // currentGame.mole.draw();
-
-    cancelAnimationFrame(currentGame.animationId);
     updateCanvas();
 }
+
+
+const intervalId = setInterval(() => {
+    updateCanvas();
+}, 2000)
 
 
 function updateCanvas() {
     context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 
+    holes();
+    mole();
+    hammer();
+}
 
+
+function holes() {
     holesCoordinates.forEach((coord) => {
         const hole = new Hole(coord.x, coord.y);
         hole.draw();
     })
-
-    const randomMole = new Mole(holesCoordinates[randomCoordinate].x, holesCoordinates[randomCoordinate].y);
-    randomMole.draw();
-
-
-
-    currentGame.hammer.draw();
-    currentGame.animationId = requestAnimationFrame(updateCanvas);
 }
 
+function mole() {
+    const randomCoordinate = Math.floor(Math.random() * 8);
+    const showMole = new Mole(holesCoordinates[randomCoordinate].x, holesCoordinates[randomCoordinate].y);
+    showMole.draw();
+}
 
-startGame();
+function hammer() {
+    currentGame.hammer.draw();
+}
