@@ -1,8 +1,8 @@
 class Hammer {
 
-    constructor() {
-        this.x = 230;
-        this.y = 230;
+    constructor(x, y) {
+        this.x = x + 50;
+        this.y = y - 5;
         this.width = 80;
         this.height = 80;
 

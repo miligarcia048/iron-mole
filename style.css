@@ -1,9 +1,11 @@
 body {
-    background-color: blanchedalmond;
+    background-image: url("./images/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
 #canvas {
-    background-color: aqua;
     margin: auto;
     position: fixed;
     top: 0;

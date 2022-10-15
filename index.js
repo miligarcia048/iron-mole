@@ -52,6 +52,7 @@ function startGame() {
     currentGame.hammer = hammer;
     currentGame.hammer.draw();
     updateCanvas();
+
 }
 
 
@@ -62,10 +63,10 @@ const intervalId = setInterval(() => {
 
 function updateCanvas() {
     context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-
     holes();
     mole();
     hammer();
+
 }
 
 
@@ -82,6 +83,9 @@ function mole() {
     showMole.draw();
 }
 
+const randomCoordinateHammer = Math.floor(Math.random() * 8);
+
 function hammer() {
-    currentGame.hammer.draw();
+    const showHammer = new Hammer(holesCoordinates[randomCoordinateHammer].x, holesCoordinates[randomCoordinateHammer].y);
+    showHammer.draw();
 }
