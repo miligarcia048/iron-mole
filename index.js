@@ -185,6 +185,7 @@ function updateTimer() {
 
 //Game over
 function gameOver() {
+    document.getElementById('final-score').innerHTML = currentGame.score;
     document.getElementById("game-board").style.display = "none";
     document.getElementById("gameOver").style.display = "block";
 }
