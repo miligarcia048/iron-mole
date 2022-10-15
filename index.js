@@ -1,28 +1,27 @@
+let timer;
+let timeLeft = 60;
+let currentGame;
+let level;
+
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
 document.getElementById("game-board").style.display = "none";
 document.getElementById("gameOver").style.display = "none";
+
 document.getElementById("start-button").onclick = () => {
+
+    level = document.querySelector('select').value;
     document.getElementById("game-board").style.display = "block";
-    document.getElementById("start-button").style.display = "none";
+    document.getElementById("first-screen").style.display = "none";
+
     startGame();
 };
-//document.getElementById("playAgain").onclick = () => {
-//    document.getElementById("game-board").style.display = "block";
-//    document.getElementById("playAgain").style.display = "none";
-//    document.getElementById("gameOver").style.display = "none";
-//    startGame();
-//    debugger
-//};
 
-let timer;
-let timeLeft = 60;
 
-let currentGame;
 
 const randomCoordinateHammer = Math.floor(Math.random() * 8);
-
+const showHammer = new Hammer(470, 330);
 const holesCoordinates = [{
         x: 70,
         y: 70,
@@ -61,7 +60,7 @@ const holesCoordinates = [{
     },
 ];
 
-const showHammer = new Hammer(470, 330);
+
 
 function startGame() {
     timer = setInterval(updateTimer, 1000);
@@ -71,6 +70,7 @@ function startGame() {
     intervalId = setInterval(() => {
         updateCanvas();
     }, 1000 / 60);
+
 }
 
 function updateCanvas() {
@@ -98,7 +98,21 @@ function holes() {
 }
 
 function mole() {
-    if (currentGame.frames % 120 === 0) {
+
+    switch (level) {
+        case 'easy':
+            gameSpeed = 200;
+            break;
+        case 'medium':
+            gameSpeed = 120;
+            break;
+        case 'hard':
+            gameSpeed = 70;
+            break;
+    }
+
+
+    if (currentGame.frames % gameSpeed === 0) {
         const randomCoordinate = Math.floor(Math.random() * 8);
         const showMole = new Mole(
             holesCoordinates[randomCoordinate].x,
