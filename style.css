@@ -30,3 +30,11 @@ body {
 .timmer {
     text-align: center;
 }
+
+#game-over {
+    display: none;
+}
+
+#game-board {
+    display: none;
+}

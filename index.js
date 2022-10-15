@@ -6,18 +6,22 @@ let level;
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
-document.getElementById("game-board").style.display = "none";
-document.getElementById("gameOver").style.display = "none";
 
 document.getElementById("start-button").onclick = () => {
-
     level = document.querySelector('select').value;
     document.getElementById("game-board").style.display = "block";
     document.getElementById("first-screen").style.display = "none";
-
     startGame();
 };
 
+document.getElementById("playAgain").onclick = () => {
+    currentGame.score = 0;
+    timeLeft = 60;
+    document.getElementById("first-screen").style.display = "block";
+    document.getElementById("game-over").style.display = "none";
+    debugger
+
+};
 
 
 const randomCoordinateHammer = Math.floor(Math.random() * 8);
@@ -187,5 +191,5 @@ function updateTimer() {
 function gameOver() {
     document.getElementById('final-score').innerHTML = currentGame.score;
     document.getElementById("game-board").style.display = "none";
-    document.getElementById("gameOver").style.display = "block";
+    document.getElementById("game-over").style.display = "block";
 }
