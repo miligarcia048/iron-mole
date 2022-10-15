@@ -8,6 +8,9 @@ document.getElementById("start-button").onclick = () => {
   startGame();
 };
 
+let timer; 
+let timeLeft = 60;
+
 let currentGame;
 
 const randomCoordinateHammer = Math.floor(Math.random() * 8);
@@ -51,15 +54,15 @@ const holesCoordinates = [
   },
 ];
 const showHammer = new Hammer(470, 330);
+
 function startGame() {
+    timer = setInterval(updateTimer, 1000);
+  updateTimer();
   currentGame = new Game();
-
-  updateCanvas();
+  intervalId = setInterval(() => {
+    updateCanvas();
+  }, 1000 / 60);
 }
-
-const intervalId = setInterval(() => {
-  updateCanvas();
-}, 1000 / 60);
 
 function updateCanvas() {
   currentGame.frames++;
@@ -95,10 +98,23 @@ function mole() {
 
 function hammer() {
   showHammer.draw();
-
-  document.addEventListener("keyup", (keyboardEvent) => {
-    /* debugger */
-    showHammer.moveHammer(keyboardEvent.key);
-    console.log(keyboardEvent.key);
-  });
 }
+document.addEventListener("keyup", (keyboardEvent) => {
+  /* debugger */
+  showHammer.moveHammer(keyboardEvent.key);
+  console.log(keyboardEvent.key);
+});
+
+//TIMER
+function updateTimer() {
+    timeLeft = timeLeft - 1;
+    if(timeLeft >= 0)
+    document.getElementById('timer').innerHTML= timeLeft;
+    else {
+      gameOver();
+    }
+  }
+
+  function gameOver() {
+    cancelInterval(timer);
+  }
