@@ -3,89 +3,102 @@ const context = canvas.getContext("2d");
 
 document.getElementById("game-board").style.display = "none";
 document.getElementById("start-button").onclick = () => {
-    document.getElementById("game-board").style.display = "block";
-    document.getElementById("start-button").style.display = "none";
-    startGame();
-}
+  document.getElementById("game-board").style.display = "block";
+  document.getElementById("start-button").style.display = "none";
+  startGame();
+};
 
 let currentGame;
 
-const holesCoordinates = [{
-        x: 70,
-        y: 70
-    }, {
-        x: 270,
-        y: 70
-    },
-    {
-        x: 470,
-        y: 70
-    }, {
-        x: 70,
-        y: 200
-    },
-    {
-        x: 270,
-        y: 200
-    },
-    {
-        x: 470,
-        y: 200
-    },
-    {
-        x: 70,
-        y: 320
-    },
-    {
-        x: 270,
-        y: 320
-    },
-    {
-        x: 470,
-        y: 320
-    },
-]
+const randomCoordinateHammer = Math.floor(Math.random() * 8);
 
+const holesCoordinates = [
+  {
+    x: 70,
+    y: 70,
+  },
+  {
+    x: 270,
+    y: 70,
+  },
+  {
+    x: 470,
+    y: 70,
+  },
+  {
+    x: 70,
+    y: 200,
+  },
+  {
+    x: 270,
+    y: 200,
+  },
+  {
+    x: 470,
+    y: 200,
+  },
+  {
+    x: 70,
+    y: 330,
+  },
+  {
+    x: 270,
+    y: 330,
+  },
+  {
+    x: 470,
+    y: 330,
+  },
+];
+const showHammer = new Hammer(470, 330);
 function startGame() {
-    currentGame = new Game();
-    const hammer = new Hammer();
-    currentGame.hammer = hammer;
-    currentGame.hammer.draw();
-    updateCanvas();
+  currentGame = new Game();
 
+  updateCanvas();
 }
-
 
 const intervalId = setInterval(() => {
-    updateCanvas();
-}, 2000)
-
+  updateCanvas();
+}, 1000 / 60);
 
 function updateCanvas() {
-    context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-    holes();
-    mole();
-    hammer();
+  currentGame.frames++;
+  context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+  holes();
+  currentGame.enemies.forEach((mole) => {
+    mole.draw();
+  });
+  mole();
 
+  hammer();
 }
 
-
 function holes() {
-    holesCoordinates.forEach((coord) => {
-        const hole = new Hole(coord.x, coord.y);
-        hole.draw();
-    })
+  holesCoordinates.forEach((coord) => {
+    const hole = new Hole(coord.x, coord.y);
+    hole.draw();
+  });
 }
 
 function mole() {
+  if (currentGame.frames % 120 === 0) {
     const randomCoordinate = Math.floor(Math.random() * 8);
-    const showMole = new Mole(holesCoordinates[randomCoordinate].x, holesCoordinates[randomCoordinate].y);
-    showMole.draw();
+    const showMole = new Mole(
+      holesCoordinates[randomCoordinate].x,
+      holesCoordinates[randomCoordinate].y
+    );
+
+    currentGame.enemies = [];
+    currentGame.enemies.push(showMole);
+  }
 }
 
-const randomCoordinateHammer = Math.floor(Math.random() * 8);
-
 function hammer() {
-    const showHammer = new Hammer(holesCoordinates[randomCoordinateHammer].x, holesCoordinates[randomCoordinateHammer].y);
-    showHammer.draw();
+  showHammer.draw();
+
+  document.addEventListener("keyup", (keyboardEvent) => {
+    /* debugger */
+    showHammer.moveHammer(keyboardEvent.key);
+    console.log(keyboardEvent.key);
+  });
 }
