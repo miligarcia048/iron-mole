@@ -13,6 +13,7 @@ document.getElementById("start-button").onclick = () => {
     document.getElementById("game-board").style.display = "flex";
     document.getElementById("first-screen").style.display = "none";
     startGame();
+    document.getElementById("score").innerHTML = currentGame.score;
     //myBackgroundSound = new Audio('./sounds/boss_time.mp3');
     //myBackgroundSound.play();
 };
