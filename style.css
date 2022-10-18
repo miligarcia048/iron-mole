@@ -1,40 +1,84 @@
-body {
-    background-image: url("./images/background.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* height: 100vh; */
-}
-
-#canvas {
-    margin: auto;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.title {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-}
-
-#start-button {
-    font-size: 20px;
-    color: white;
-    border: none;
-    background-color: blueviolet;
-    padding: 20px;
-}
-
-.timmer {
-    text-align: center;
-}
-
-#game-over {
-    display: none;
-}
-
-#game-board {
-    display: none;
-}
+    @font-face {
+        font-family: pixel;
+        src: url(ARCADECLASSIC.ttf);
+    }
+    
+    #game-board {
+        display: none;
+    }
+    
+    #game-over {
+        display: none;
+    }
+    
+    body {
+        font-family: pixel;
+        background-image: url("./images/background.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+    }
+    
+    #first-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    
+    #canvas {
+        margin: auto;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    
+    .title-start {
+        margin-top: -5%;
+        font-family: pixel;
+        font-size: 100px;
+        letter-spacing: 0.7rem;
+    }
+    
+    #start-button {
+        font-family: pixel;
+        font-size: 50px;
+        color: black;
+        border: none;
+        background-color: antiquewhite;
+        padding: 20px;
+    }
+    
+    .title {
+        margin: 0;
+        font-family: pixel;
+        letter-spacing: 0.7rem;
+        font-size: 80px;
+        text-align: center;
+    }
+    
+    .data {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .data span {
+        font-size: 80px;
+        margin-top: 3%;
+    }
+    
+    .seconds {
+        width: 150px;
+    }
+    
+    .points {
+        width: 150px;
+    }

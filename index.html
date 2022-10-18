@@ -20,14 +20,28 @@
 <body>
 
     <div id="game-board">
-        <h1 class="title">IRON MOLE</h1>
-        <p class="timmer">You have: <span id="timer">0</span> seconds remaining!</p>
-        <p>You have: <span id="score">0</span> points</p>
 
-        <canvas id="canvas" width="700" height="500"></canvas>
+
+        <div class="game-canvas">
+
+            <h1 class="title">IRON MOLE</h1>
+            <div class="data">
+                <div class="points">
+                    <p> <span id="score">0</span><br> points</p>
+                </div>
+                <div class="seconds">
+                    <p class="timmer"><span id="timer">0</span> <br> seconds<br> remaining!</p>
+                </div>
+            </div>
+
+            <canvas id="canvas" width="700" height="500"></canvas>
+        </div>
 
     </div>
+
     <div id="first-screen">
+
+        <h1 class="title-start">IRON MOLE</h1>
         <button id="start-button"> Start Game </button>
         <div id="levels">
             <label for="levels">Levels:</label>
