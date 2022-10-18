@@ -3,14 +3,18 @@ let timeLeft = 60;
 let currentGame;
 let level;
 let intervalId;
+let myBackgroundSound;
+let whacSound;
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
 document.getElementById("start-button").onclick = () => {
   level = document.querySelector("select").value;
-  document.getElementById("game-board").style.display = "block";
+  document.getElementById("game-board").style.display = "flex";
   document.getElementById("first-screen").style.display = "none";
   startGame();
+  //myBackgroundSound = new Audio('./sounds/boss_time.mp3');
+  //myBackgroundSound.play();
 };
 
 document.getElementById("playAgain").onclick = () => {
@@ -126,15 +130,16 @@ function hammer() {
 }
 
 document.addEventListener("keyup", (keyboardEvent) => {
-  /* debugger */
+
   showHammer.moveHammer(keyboardEvent.key);
-  console.log(keyboardEvent.key);
 });
 
 //collision
+whacSound = new Audio('./sounds/whack04-105536.mp3');
 document.addEventListener("keyup", (event) => {
   if (event.code === "Space") {
     detectCollision();
+    
   }
 });
 
@@ -149,6 +154,7 @@ function detectCollision() {
     console.log("kill the mole");
     currentGame.enemies = [];
     mole();
+    whacSound.play();
     currentGame.score++;
     document.getElementById("score").innerHTML = currentGame.score;
   } else {
@@ -178,3 +184,4 @@ function gameOver() {
   document.getElementById("game-board").style.display = "none";
   document.getElementById("game-over").style.display = "block";
 }
+

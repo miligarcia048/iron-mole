@@ -13,7 +13,6 @@ class Hammer {
     }
 
     moveHammer(key) {
-        // context.clearRect(this.x, this.y, this.width, this.height);
         switch (key) {
             case "ArrowLeft":
                 if (this.x >= 20) {
