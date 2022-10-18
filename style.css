@@ -5,6 +5,7 @@
     
     #game-board {
         display: none;
+        justify-content: space-around;
     }
     
     #game-over {
