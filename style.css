@@ -32,6 +32,7 @@
     }
     
     #canvas {
+        padding-top: 100px;
         margin: auto;
         position: fixed;
         top: 0;
