@@ -145,3 +145,11 @@
     .points {
         width: 150px;
     }
+    /*game over*/
+    
+    #game-over h1 {
+        margin: 0;
+        font-family: pixel;
+        letter-spacing: 0.7rem;
+        font-size: 80px;
+    }
