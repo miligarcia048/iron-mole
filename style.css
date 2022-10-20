@@ -19,17 +19,94 @@
         background-size: cover;
         height: 100%;
     }
+    /*first screen*/
     
     #first-screen {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        position: absolute;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
+    }
+    
+    .start-screen {
+        display: flex;
+    }
+    
+    .start-screen h2 {
+        font-size: 50px;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    
+    .title-start {
+        font-size: 100px;
+        letter-spacing: 0.7rem;
+    }
+    
+    .arrows-image {
+        width: 50%;
+    }
+    
+    .spacebar-image {
+        width: 60%;
+        margin-top: 20px;
+    }
+    
+    .instructions {
+        margin: 0 100px;
+    }
+    
+    .buttons-first-screen {
+        margin: 0 100px;
+    }
+    
+    .levels select option {
+        font-family: pixel;
+    }
+    
+    .select-items {
+        font-family: pixel;
+    }
+    
+    #levels {
+        padding-bottom: 50px;
+    }
+    
+    input[type='radio'] {
+        box-sizing: border-box;
+        appearance: none;
+        background: white;
+        outline: 2px solid #333;
+        border: 3px solid white;
+        width: 16px;
+        height: 16px;
+    }
+    
+    input[type='radio']:checked {
+        background: #333;
+    }
+    
+    label {
+        font-size: 25px;
+        margin-left: 10px;
+        line-height: 36px;
+    }
+    
+    #start-button {
+        font-family: pixel;
+        font-size: 50px;
+        color: black;
+        border: none;
+        background-color: antiquewhite;
+        padding: 20px;
+    }
+    
+    #start-button:hover {
+        background-color: beige;
     }
     
     #canvas {
@@ -40,22 +117,6 @@
         bottom: 0;
         left: 0;
         right: 0;
-    }
-    
-    .title-start {
-        margin-top: -5%;
-        font-family: pixel;
-        font-size: 100px;
-        letter-spacing: 0.7rem;
-    }
-    
-    #start-button {
-        font-family: pixel;
-        font-size: 50px;
-        color: black;
-        border: none;
-        background-color: antiquewhite;
-        padding: 20px;
     }
     
     .title {

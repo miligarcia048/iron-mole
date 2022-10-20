@@ -42,23 +42,32 @@
     <div id="first-screen">
 
         <h1 class="title-start">IRON MOLE</h1>
-        <button id="start-button"> Start Game </button>
-        <div id="levels">
-            <label for="levels">Levels:</label>
+        <div class="start-screen">
+            <div class="instructions">
+                <h2> Instructions </h2>
+                <div><img class="arrows-image" src="images/arrows.svg"></div>
+                <p> Use the keys to move the hammer</p>
+                <div><img class="spacebar-image " src="images/spacebar.svg"></div>
+                <p> press space bar to kill the mole</p>
+            </div>
+            <div class="buttons-first-screen">
+                <div id="levels">
+                    <h2> Levels </h2>
+                    <input type="radio" id="easy" name="level" value="easy">
+                    <label for="easy">easy</label><br>
+                    <input type="radio" id="medium" name="level" value="medium">
+                    <label for="medium">medium</label><br>
+                    <input type="radio" id="hard" name="level" value="hard">
+                    <label for="hard">hard</label>
+                </div>
 
-            <select name="levels" id="levels">
-			<option value="easy">Easy</option>
-			<option value="medium">Medium</option>
-			<option value="hard">Hard</option>
-</select>
-
-        </div>
-    </div>
-    <div id="game-over">
-        <h1>GAME OVER!!</h1>
-        <h1>Your score is: <span id="final-score"></span></h1>
-        <button id="playAgain"> Play again</button>
-    </div>
+                <button id="start-button"> Start Game </button>
+            </div>
+            <div id="game-over">
+                <h1>GAME OVER!!</h1>
+                <h1>Your score is: <span id="final-score"></span></h1>
+                <button id="playAgain"> Play again</button>
+            </div>
 
 </body>
 
