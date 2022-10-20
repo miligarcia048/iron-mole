@@ -4,18 +4,26 @@ let currentGame;
 let level;
 let intervalId;
 let myBackgroundSound;
+let myBackgroundSound2;
 let whacSound;
+let gameOverSound;
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
+myBackgroundSound = new Audio('./sounds/Fluffing-a-Duck.mp3');
+myBackgroundSound2 = new Audio('./sounds/Sneaky-Snitch.mp3');
+whacSound = new Audio("./sounds/whack04-105536.mp3");
+gameOverSound = new Audio("./sounds/ooh-123103.mp3");
+
+
 document.getElementById("start-button").onclick = () => {
-  level = document.querySelector("select").value;
+    level = document.querySelector('input[name=level]:checked').value;
   document.getElementById("game-board").style.display = "flex";
   document.getElementById("first-screen").style.display = "none";
+  myBackgroundSound2.play();
   startGame();
   document.getElementById("score").innerHTML = currentGame.score;
-  //myBackgroundSound = new Audio('./sounds/boss_time.mp3');
-  //myBackgroundSound.play();
+  
 };
 
 document.getElementById("playAgain").onclick = () => {
@@ -136,7 +144,6 @@ document.addEventListener("keyup", (keyboardEvent) => {
 });
 
 //collision
-whacSound = new Audio("./sounds/whack04-105536.mp3");
 
 document.addEventListener("keyup", (event) => {
   if (event.code === "Space") {
@@ -190,6 +197,7 @@ function updateTimer() {
 
 //Game over
 function gameOver() {
+  gameOverSound.play();
   document.getElementById("final-score").innerHTML = currentGame.score;
   document.getElementById("game-board").style.display = "none";
   document.getElementById("game-over").style.display = "block";
