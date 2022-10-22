@@ -45,6 +45,7 @@ document.getElementById('levels').onclick = () => {
 }
 
 document.getElementById("playAgain").onclick = () => {
+    document.getElementById("errorMessage").innerHTML = " ";
     currentGame.score = 0;
     timeLeft = 60;
     clearInterval(intervalId);
