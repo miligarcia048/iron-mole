@@ -46,9 +46,9 @@ class Hammer {
     colision(enemy) {
         return !(
             this.y + this.height < enemy.y ||
-            this.y > enemy.y + enemy.height - 100 ||
+            this.y > enemy.y - 10 + enemy.height ||
             this.x + this.width < enemy.x ||
-            this.x > enemy.x + enemy.width - 100
+            this.x > enemy.x - 90 + enemy.width
         );
     }
 }
