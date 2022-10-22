@@ -21,12 +21,9 @@ const radioButtons = document.querySelectorAll('input[name=level]');
 
 document.getElementById("start-button").onclick = () => {
 
-    //document.querySelector('input[name=level]:checked').value;
-    let level;
     for (const radioButton of radioButtons) {
         if (radioButton.checked) {
             level = radioButton.value;
-
             document.getElementById("game-board").style.display = "flex";
             document.getElementById("first-screen").style.display = "none";
             myBackgroundSound2.play();
@@ -39,16 +36,12 @@ document.getElementById("start-button").onclick = () => {
 
 };
 
-
 document.getElementById('levels').onclick = () => {
     for (const radioButton of radioButtons) {
         if (radioButton.checked) {
             document.getElementById("errorMessage").innerHTML = " ";
-
-
         }
     }
-
 }
 
 document.getElementById("playAgain").onclick = () => {
