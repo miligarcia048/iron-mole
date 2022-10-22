@@ -15,7 +15,6 @@
     body {
         font-family: pixel;
         background-image: url("./images/background.png");
-        background-repeat: no-repeat;
         background-size: cover;
         height: 100%;
     }
@@ -151,9 +150,40 @@
     }
     /*game over*/
     
+    #game-over {
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    
     #game-over h1 {
         margin: 0;
         font-family: pixel;
         letter-spacing: 0.7rem;
-        font-size: 80px;
+        font-size: 90px;
+        margin-bottom: 20px;
+    }
+    
+    .game-over-data {
+        display: flex;
+        align-items: center;
+    }
+    
+    .play-again-button {
+        font-family: pixel;
+        font-size: 40px;
+        color: black;
+        border: none;
+        background-color: antiquewhite;
+        padding: 20px;
+        margin-left: 50px;
+    }
+    
+    #final-score {
+        font-size: 70px;
     }
