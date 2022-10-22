@@ -5,6 +5,7 @@ let level;
 let intervalId;
 let myBackgroundSound;
 let myBackgroundSound2;
+let swooshSound;
 let whacSound;
 let gameOverSound;
 const canvas = document.getElementById("canvas");
@@ -14,6 +15,7 @@ myBackgroundSound = new Audio('./sounds/Fluffing-a-Duck.mp3');
 myBackgroundSound2 = new Audio('./sounds/Sneaky-Snitch.mp3');
 whacSound = new Audio("./sounds/whack04-105536.mp3");
 gameOverSound = new Audio("./sounds/ooh-123103.mp3");
+swooshSound = new Audio("./sounds/whoosh-6316.mp3");
 
 
 document.getElementById("start-button").onclick = () => {
@@ -176,6 +178,7 @@ function detectCollision() {
     document.getElementById("score").innerHTML = currentGame.score;
   } else {
     console.log("lost one point");
+    swooshSound.play();
     currentGame.score--;
 
     if (currentGame.score === -6) {
