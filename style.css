@@ -102,11 +102,15 @@
         color: black;
         border: none;
         background-color: antiquewhite;
-        padding: 20px;
+        padding: 26px;
     }
     
     #start-button:hover {
         background-color: beige;
+    }
+    
+    #errorMessage {
+        color: red;
     }
     
     #canvas {
