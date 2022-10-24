@@ -1,5 +1,5 @@
 let timer;
-let timeLeft = 15;
+let timeLeft = 60;
 let currentGame;
 let level;
 let intervalId;
