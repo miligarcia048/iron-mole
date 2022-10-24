@@ -235,7 +235,7 @@ function gameOver() {
     myBackgroundSound2.pause();
     clearInterval(intervalId);
     clearInterval(timer);
-    if (currentGame.score >= 20) {
+    if (currentGame.score >= 14) {
         winSound.play();
         winSound.loop = false;
     } else {
