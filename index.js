@@ -224,8 +224,7 @@ function detectCollision() {
 //TIMER
 function updateTimer() {
     timeLeft = timeLeft - 1;
-    if (timeLeft > 0) document.getElementById("timer").innerHTML = timeLeft;
-    else {
+    if (timeLeft > 0) { document.getElementById("timer").innerHTML = timeLeft; } else {
         gameOver();
     }
 }
@@ -235,7 +234,8 @@ function gameOver() {
     myBackgroundSound2.pause();
     clearInterval(intervalId);
     clearInterval(timer);
-    if (currentGame.score >= 14) {
+    if (currentGame.score >= 12) {
+        document.getElementById("title-game-over").innerHTML = "Hurray you beat the mole!";
         winSound.play();
         winSound.loop = false;
     } else {
