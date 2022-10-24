@@ -232,6 +232,7 @@ function updateTimer() {
 
 //Game over
 function gameOver() {
+    myBackgroundSound2.pause();
     clearInterval(intervalId);
     clearInterval(timer);
     if (currentGame.score >= 20) {
