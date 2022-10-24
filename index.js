@@ -3,6 +3,7 @@ let timeLeft = 60;
 let currentGame;
 let level;
 let intervalId;
+let volumeOn = true;
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
@@ -48,6 +49,19 @@ document.getElementById("playAgain").onclick = () => {
     document.getElementById("first-screen").style.display = "flex";
     document.getElementById("game-over").style.display = "none";
 };
+
+document.querySelector(".vol-on").onclick = () => {
+
+    if (volumeOn) {
+        volumeOn = false;
+        document.querySelector(".vol-on").src = "/images/volOff.png";
+        myBackgroundSound2.pause();
+    } else if (!volumeOn) {
+        volumeOn = true;
+        document.querySelector(".vol-on").src = "/images/volOn.png";
+        myBackgroundSound2.play();
+    }
+}
 
 const randomCoordinateHammer = Math.floor(Math.random() * 8);
 const hammer = new Hammer(470, 330);
@@ -173,6 +187,8 @@ function handleHammer() {
 document.addEventListener("keyup", (keyboardEvent) => {
     currentGame.hammer.moveHammer(keyboardEvent.key);
 });
+
+
 
 //collision
 
