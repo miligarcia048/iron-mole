@@ -22,7 +22,6 @@ document.getElementById("start-button").onclick = () => {
             level = radioButton.value;
             document.getElementById("game-board").style.display = "flex";
             document.getElementById("first-screen").style.display = "none";
-            myBackgroundSound2.play();
             startGame();
             document.getElementById("score").innerHTML = currentGame.score;
         } else {
@@ -104,6 +103,17 @@ const holesCoordinates = [{
 ];
 
 function startGame() {
+    //check if volume was on or off
+    if (volumeOn) {
+        volumeOn = false;
+        document.querySelector(".vol-on").src = "/images/volOff.png";
+        myBackgroundSound2.pause();
+    } else if (!volumeOn) {
+        volumeOn = true;
+        document.querySelector(".vol-on").src = "/images/volOn.png";
+        myBackgroundSound2.play();
+    }
+
     document.querySelector(".mode-level").innerHTML = level + " mode";
 
     timer = setInterval(updateTimer, 1000);
@@ -221,16 +231,19 @@ function detectCollision() {
             currentGame.enemies = [];
             handleMole();
         }, 500);
-
-        whacSound.play();
         currentGame.score++;
         document.getElementById("score").innerHTML = currentGame.score;
+        if (volumeOn) {
+            whacSound.play();
+        }
     } else {
         currentGame.mole.crashedMole = false;
         console.log("lost one point");
-        swooshSound.play();
-        currentGame.score--;
 
+        currentGame.score--;
+        if (volumeOn) {
+            swooshSound.play();
+        }
         if (currentGame.score === -6) {
             gameOver();
         } else {
@@ -249,16 +262,23 @@ function updateTimer() {
 
 //Game over
 function gameOver() {
+
+    // only play final sound if audio is on
+    if (volumeOn) {
+        if (currentGame.score >= 12) {
+            document.getElementById("title-game-over").innerHTML = "Hurray you beat the mole!";
+            winSound.play();
+            winSound.loop = false;
+        } else {
+            gameOverSound.play();
+        }
+    }
+
+
     myBackgroundSound2.pause();
     clearInterval(intervalId);
     clearInterval(timer);
-    if (currentGame.score >= 12) {
-        document.getElementById("title-game-over").innerHTML = "Hurray you beat the mole!";
-        winSound.play();
-        winSound.loop = false;
-    } else {
-        gameOverSound.play();
-    }
+
     document.getElementById("final-score").innerHTML = currentGame.score;
     document.getElementById("game-board").style.display = "none";
     document.getElementById("game-over").style.display = "flex";
