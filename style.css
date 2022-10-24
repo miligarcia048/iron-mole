@@ -41,6 +41,13 @@
         margin-bottom: 20px;
     }
     
+    .mode-level {
+        text-align: center;
+        font-size: 25px;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    
     .title-start {
         font-size: 100px;
         letter-spacing: 0.7rem;

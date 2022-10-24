@@ -90,6 +90,8 @@ const holesCoordinates = [{
 ];
 
 function startGame() {
+    document.querySelector(".mode-level").innerHTML = level + " mode";
+
     timer = setInterval(updateTimer, 1000);
     updateTimer();
 
