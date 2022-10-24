@@ -189,6 +189,10 @@
         align-items: center;
     }
     
+    .game-over-data h3 {
+        text-align: center;
+    }
+    
     .play-again-button {
         font-family: pixel;
         font-size: 40px;
