@@ -234,7 +234,7 @@ function updateTimer() {
 function gameOver() {
     clearInterval(intervalId);
     clearInterval(timer);
-    if (currentGame.score >= 2) {
+    if (currentGame.score >= 20) {
         winSound.play();
         winSound.loop = false;
     } else {
