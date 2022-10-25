@@ -31,6 +31,14 @@
         right: 0;
     }
     
+    .vol-start {
+        position: absolute;
+        top: 0;
+        width: 3%;
+        right: 0;
+        padding: 1%;
+    }
+    
     .vol-on {
         position: absolute;
         top: 0;

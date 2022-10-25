@@ -3,7 +3,8 @@ let timeLeft = 60;
 let currentGame;
 let level;
 let intervalId;
-let volumeOn = true;
+let volumeOn = false;
+let volumeOnHome = false;
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
@@ -15,6 +16,7 @@ let swooshSound = new Audio("./sounds/whoosh-6316.mp3");
 let winSound = new Audio("./sounds/tadaa-47995.mp3");
 
 const radioButtons = document.querySelectorAll("input[name=level]");
+
 
 document.getElementById("start-button").onclick = () => {
     for (const radioButton of radioButtons) {
@@ -47,11 +49,21 @@ document.getElementById("playAgain").onclick = () => {
     clearInterval(timer);
     document.getElementById("first-screen").style.display = "flex";
     document.getElementById("game-over").style.display = "none";
+
+    ///check volume state when starting again
+    if (volumeOn) {
+        myBackgroundSound.play();
+        document.querySelector(".vol-start").src = "/images/volOn.png";
+    } else if (!volumeOn) {
+        document.querySelector(".vol-start").src = "/images/volOff.png";
+    }
 };
 
-document.querySelector(".vol-on").onclick = () => {
 
+//volume on game screen
+document.querySelector(".vol-on").onclick = () => {
     if (volumeOn) {
+        debugger
         volumeOn = false;
         document.querySelector(".vol-on").src = "/images/volOff.png";
         myBackgroundSound2.pause();
@@ -62,8 +74,23 @@ document.querySelector(".vol-on").onclick = () => {
     }
 }
 
+//volume on start screen
+document.querySelector(".vol-start").onclick = () => {
+    if (volumeOn) {
+        volumeOn = false;
+        document.querySelector(".vol-start").src = "/images/volOff.png";
+        myBackgroundSound.pause();
+    } else if (!volumeOn) {
+        volumeOn = true;
+        document.querySelector(".vol-start").src = "/images/volOn.png";
+        myBackgroundSound.play();
+    }
+}
+
 const randomCoordinateHammer = Math.floor(Math.random() * 8);
 const hammer = new Hammer(470, 330);
+
+//coordinates of the holes
 const holesCoordinates = [{
         x: 70,
         y: 70,
@@ -103,17 +130,14 @@ const holesCoordinates = [{
 ];
 
 function startGame() {
+    myBackgroundSound.pause();
     //check if volume was on or off
     if (volumeOn) {
-        volumeOn = false;
-        document.querySelector(".vol-on").src = "/images/volOff.png";
-        myBackgroundSound2.pause();
-    } else if (!volumeOn) {
-        volumeOn = true;
-        document.querySelector(".vol-on").src = "/images/volOn.png";
         myBackgroundSound2.play();
+        document.querySelector(".vol-on").src = "/images/volOn.png";
+    } else if (!volumeOn) {
+        document.querySelector(".vol-on").src = "/images/volOff.png";
     }
-
     document.querySelector(".mode-level").innerHTML = level + " mode";
 
     timer = setInterval(updateTimer, 1000);
